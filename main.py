@@ -1,24 +1,27 @@
 from fastapi import FastAPI 
 from pydantic import BaseModel 
 from motor.motor_asyncio import AsyncIOMotorClient
+import os
+from dotenv import load_dotenv
 
 app = FastAPI()
 
-# Conexao MongoDB
-MONGO_URI = "mongodb+srv://feaduarte:Testeapi2025@api-project.brech.mongodb.net/"
-client = AsyncIOMotorClient(MONGO_URI)
-db = client["TESTE_API"]
-collection = db["itens"]  
+# Carregar variaveis do .env 
+
+load_dotenv()
+
+# Pegar URI do MongoDB
+
+MONGO_URI = os.getenv("MONGO_URI")
+
+# Conectar ao MongoDB
+
+Client = AsyncIOMotorClient(MONGO_URI)
 
 # Atribuindo informação sobre a classe Item.
 class Item(BaseModel):
     name: str
     price: float
-
-# Rota p obter infos.
-@app.get("/")
-def read_root():
-    return {"message": "boas vindas"}
 
 # Rota p obter infos.
 @app.get("/items/{item_id}")
