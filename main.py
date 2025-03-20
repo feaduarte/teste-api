@@ -16,7 +16,9 @@ MONGO_URI = os.getenv("MONGO_URI")
 
 # Conectar ao MongoDB
 
-Client = AsyncIOMotorClient(MONGO_URI)
+client = AsyncIOMotorClient(MONGO_URI)
+db = client["Teste_API"]
+collection = db["itens"]
 
 # Atribuindo informação sobre a classe Item.
 class Item(BaseModel):
