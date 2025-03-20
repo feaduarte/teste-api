@@ -7,6 +7,16 @@ from bson import ObjectId
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware #CROS Me permite rodar o back e o front em origens diferentes p teste.
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Carregar variaveis do .env
 load_dotenv()
 
