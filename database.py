@@ -13,6 +13,6 @@ db = client["Teste_API"]
 
 # colecoes do mongodb
 
-items_colletion = db["itens"]
-users_colletion = db["users"]
+items_collection = db["itens"]
+users_collection = db["users"]
 
