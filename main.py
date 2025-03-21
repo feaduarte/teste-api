@@ -4,7 +4,7 @@ from routes import items, users
 
 app = FastAPI()
 
-# Configurar CORS
+# configurar CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  
@@ -13,6 +13,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Registrar as rotas
+# registrar as rotas
 app.include_router(items.router, prefix="/items", tags=["items"])
 app.include_router(users.router, prefix="/users", tags=["users"])

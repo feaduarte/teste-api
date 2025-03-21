@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from motor.import_asyncio import AsyncIOMotorClient
+from motor.motor_asyncio import AsyncIOMotorClient
 
 load_dotenv()
 
