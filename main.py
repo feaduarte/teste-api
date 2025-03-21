@@ -1,6 +1,9 @@
+from fastapi.responses import HTMLResponse
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes import items, users
+from fastapi.staticfiles import StaticFiles
+import os
 
 app = FastAPI()
 
@@ -16,3 +19,11 @@ app.add_middleware(
 # registrar as rotas
 app.include_router(items.router, prefix="/items", tags=["items"])
 app.include_router(users.router, prefix="/users", tags=["users"])
+
+# rodar html
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/", response_class=HTMLResponse)
+async def get_html():
+    with open("static/index.html", "r") as f:
+        return f.read()
