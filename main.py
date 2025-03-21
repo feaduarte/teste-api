@@ -21,9 +21,9 @@ app.include_router(items.router, prefix="/items", tags=["items"])
 app.include_router(users.router, prefix="/users", tags=["users"])
 
 # rodar html
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/templates", StaticFiles(directory="templates"), name="templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def get_html():
-    with open("static/index.html", "r") as f:
+    with open("templates/index.html", "r") as f:
         return f.read()
