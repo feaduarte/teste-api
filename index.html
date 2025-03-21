@@ -37,7 +37,7 @@
             const result = await response.json();
             
             if (response.ok) {
-                document.getElementById("responseMessage").innerText = "Item cadastrado com sucesso! ID: " + result.id;
+                document.getElementById("responseMessage").innerText = "Item cadastrado! ID: " + result.id;
             } else {
                 document.getElementById("responseMessage").innerText = "Erro: " + result.detail;
             }

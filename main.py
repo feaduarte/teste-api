@@ -95,7 +95,7 @@ class User(BaseModel):
     username: str
     password: str  
 
-# rota para criar um user
+# rota p criar um user
 @app.post("/users/")
 async def create_user(user: User):
     hashed_password = hash_password(user.password)  
